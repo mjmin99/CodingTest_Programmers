@@ -13,5 +13,6 @@ public class Example
         int b = Int32.Parse(s[1]);
 
         Console.WriteLine("{0} + {1} = {2}", a, b, a + b);
+        //Console.WriteLine($"{a} + {b} = {a+b}"); 
     }
 }
