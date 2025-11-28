@@ -1,28 +1,36 @@
 using System;
+using System.IO;
 using System.Text;
 
-class akswns
+class Program
 {
     static void Main()
     {
-        int N = int.Parse(Console.ReadLine());
-        
-        int[] input = new int[N];
-        
+        var sr = new StreamReader(Console.OpenStandardInput());
+        var sw = new StreamWriter(Console.OpenStandardOutput());
+
+        int N = int.Parse(sr.ReadLine());
+
+        // -1_000_000 ~ 1_000_000 → 인덱스 0 ~ 2_000_000 으로 매핑
+        bool[] exist = new bool[2000001];
+
         for (int i = 0; i < N; i++)
         {
-            input[i] = int.Parse(Console.ReadLine());
+            int x = int.Parse(sr.ReadLine());
+            exist[x + 1000000] = true;
         }
-
-        Array.Sort(input);
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < exist.Length; i++)
         {
-            sb.AppendLine(input[i].ToString());
+            if (exist[i])
+            {
+                sb.Append(i - 1000000).Append('\n');
+            }
         }
 
-        Console.Write(sb.ToString());
+        sw.Write(sb.ToString());
+        sw.Flush();
     }
 }
