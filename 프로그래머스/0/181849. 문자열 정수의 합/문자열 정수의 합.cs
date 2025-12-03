@@ -1,0 +1,13 @@
+using System;
+
+public class Solution {
+    public int solution(string num_str) {
+        int sum = 0;
+
+        foreach (char c in num_str) {
+            sum += c - '0';   // 문자 → 숫자 변환
+        }
+
+        return sum;
+    }
+}
